@@ -1,2 +1,7 @@
 .idea/
+/cluster.iml
 vendor/
+
+json2ssm
+
+dist/**

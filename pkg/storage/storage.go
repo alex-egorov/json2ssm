@@ -1,19 +1,13 @@
 package storage
 
 import (
-	"sync"
-
 	"fmt"
-
-	"strings"
-
-	"reflect"
-
-	"strconv"
-
-	"time"
-
 	"os"
+	"reflect"
+	"strconv"
+	"strings"
+	"sync"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ssm"
@@ -309,7 +303,7 @@ func (s *SSMStorage) Import(values map[string]interface{}, msg string, encrypt b
 			_, err = s.svc.AddTagsToResource(&ssm.AddTagsToResourceInput{
 				ResourceId:   aws.String(k),
 				ResourceType: aws.String(ssm.ResourceTypeForTaggingParameter),
-				Tags: []*ssm.Tag{&ssm.Tag{
+				Tags: []*ssm.Tag{{
 					Key:   aws.String("type"),
 					Value: aws.String(reflect.TypeOf(v).Kind().String()),
 				}},

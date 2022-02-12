@@ -1,14 +1,45 @@
+project_name: json2ssm
+env_files:
+  github_token: ~/.ssh/github-token
+before:
+  hooks:
+    - go mod download
+    #- go test ./...
 build:
-  main: ./cmd/json2ssm
+  main: ./main.go
   binary: json2ssm
   goos:
     - darwin
     - linux
-    - windows
+    #- windows
   goarch:
     - amd64
-brew:
+archives:
+  - id: json2ssm
+    builds:
+      - json2ssm
+    format: binary
+    wrap_in_directory: false
+    name_template: "json2ssm_v{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+release:
   github:
-    owner: b-b3rn4rd
-    name: homebrew-tap
-  folder: Formula
+    owner: alex-egorov
+    name: json2ssm
+  ids:
+    - json2ssm
+  draft: true
+  prerelease: auto
+  name_template: "json2ssm v{{.Version}}"
+  disable: false
+source:
+  enabled: false

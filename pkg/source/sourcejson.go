@@ -3,7 +3,6 @@ package source
 import (
 	"encoding/json"
 	"io"
-
 	"io/ioutil"
 
 	"github.com/nytlabs/gojsonexplode"

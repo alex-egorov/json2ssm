@@ -1,16 +1,15 @@
 package main
 
 import (
-	"os"
-
 	"encoding/json"
 	"fmt"
+	"os"
 
 	"github.com/alecthomas/kingpin"
+	"github.com/alex-egorov/json2ssm/pkg/source"
+	"github.com/alex-egorov/json2ssm/pkg/storage"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ssm"
-	"github.com/b-b3rn4rd/json2ssm/pkg/source"
-	"github.com/b-b3rn4rd/json2ssm/pkg/storage"
 	"github.com/sirupsen/logrus"
 )
 
